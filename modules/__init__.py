@@ -1,0 +1,1 @@
+__all__ = ["facebook", "gmail", "hotmail", "instagram", "linkedin", "twitter", "vk", "yahoo"]

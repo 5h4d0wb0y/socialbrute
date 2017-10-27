@@ -1,0 +1,4 @@
+argparse
+terminaltables
+mechanize
+requests
