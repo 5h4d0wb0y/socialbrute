@@ -59,7 +59,7 @@ optional arguments:
 
 **Examples**
 
-Trying to crack facebook account:
+Trying to crack a Facebook account:
 
     ./socialbrute -s facebook -u YOUR_MAIL -w /root/wordlist.txt -d 1
 
