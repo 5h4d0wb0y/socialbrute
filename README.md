@@ -15,6 +15,7 @@ $$\   $$ |$$ |  $$ |$$ |      $$ |$$  __$$ |$$ |$$ |  $$ |$$ |      $$ |  $$ |  
     <a href="https://github.com/5h4d0wb0y/socialbrute/blob/master/LICENSE.md"><img alt="Software License" src="https://img.shields.io/badge/license-GPL3-brightgreen.svg?style=flat-square"></a>
     <a href="https://travis-ci.org/5h4d0wb0y/socialbrute"><img alt="Travis" src="https://img.shields.io/travis/5h4d0wb0y/socialbrute/master.svg?style=flat-square"></a>
     <a href="https://codecov.io/gh/5h4d0wb0y/socialbrute"><img alt="Code Coverage" src="https://img.shields.io/codecov/c/github/5h4d0wb0y/socialbrute/master.svg?style=flat-square"></a>
+    <a href="https://github.com/5h4d0wb0y/socialbrute/graphs/commit-activity"><img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>
   </p>
 </p>
 
