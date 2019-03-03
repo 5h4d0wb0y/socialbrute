@@ -56,9 +56,9 @@ optional arguments:
   -u <username>, --username <username>
                         Specify a username to crack
   -s <social>, --social <social>
-                        Choose a social network between ['baidu', 'facebook',
-                        'gmail', 'hotmail', 'instagram', 'linkedin',
-                        'twitter', 'vk', 'yahoo']
+                        Choose a social network between ['facebook', 'gmail',
+                        'hotmail', 'instagram', 'linkedin', 'twitter', 'vk',
+                        'yahoo']
   -w <wordlist>, --wordlist <wordlist>
                         Specify a wordlist path
   -d DELAY, --delay DELAY
