@@ -1,8 +1,21 @@
+# Disable sudo to speed up the build
+sudo: false
+
+# Set the build language to Python
 language: python
-python:
-  - "2.7"
-cache: pip
+
+# Set the python version to 2.7
+python: 2.7
+
+# Install the codecov pip dependency
 install:
   - pip install -r requirements.txt
+  - pip install --user codecov
+
+# Run the unit test
 script:
-  - python tests.py
+  - coverage run tests.py
+
+# Push the results back to codecov
+after_success:
+- codecov
