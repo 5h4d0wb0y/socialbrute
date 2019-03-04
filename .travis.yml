@@ -10,7 +10,7 @@ python: 2.7
 # Install the codecov pip dependency
 install:
   - pip install -r requirements.txt
-  - pip install --user codecov
+  - pip install codecov
 
 # Run the unit test
 script:
