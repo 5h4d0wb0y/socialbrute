@@ -7,9 +7,11 @@ language: python
 # Set the python version to 2.7
 python: 2.7
 
+before_install:
+  - cat requirements.txt | grep -v '#' | xargs -n 1 -L 1 pip install
+
 # Install the codecov pip dependency
 install:
-  - pip install -r requirements.txt
   - pip install codecov
 
 # Run the unit test
