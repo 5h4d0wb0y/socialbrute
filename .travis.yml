@@ -1,23 +1,17 @@
-# Disable sudo to speed up the build
-sudo: false
+# Config file for automatic testing at travis-ci.org
 
-# Set the build language to Python
 language: python
+python:
+  - 3.6
+  - 3.5
+  - 3.4
+  - 2.7
 
-# Set the python version to 2.7
-python: 2.7
+# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install: pip install -U tox-travis
 
-before_install:
-  - cat requirements.txt | grep -v '#' | xargs -n 1 -L 1 pip install
+# Command to run tests, e.g. python setup.py test
+script: tox
 
-# Install the codecov pip dependency
-install:
-  - pip install codecov
-
-# Run the unit test
-script:
-  - coverage run tests.py
-
-# Push the results back to codecov
 after_success:
-- codecov
+  - codecov
