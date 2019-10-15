@@ -16,6 +16,7 @@ with open('HISTORY.rst') as history_file:
 requirements = [
     'Click>=6.0',
     'selenium>=3.141.0',
+    'yaspin>=0.14.0',
 ]
 
 setup_requirements = [ ]
