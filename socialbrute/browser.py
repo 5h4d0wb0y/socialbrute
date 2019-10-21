@@ -17,6 +17,7 @@ class Browser:
     def start(self, headless=False, proxy=None, user_agent=None):
         global driver
         chrome_options = Options()
+        chrome_options.add_argument("--no-sandbox")
         if headless:
             chrome_options.add_argument("--headless")
         if proxy:
