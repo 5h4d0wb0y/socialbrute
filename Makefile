@@ -128,10 +128,6 @@ bump-major: ## bump the major version
 	bump2version major
 	@echo Bumped to version $(VERSION)
 
-.PHONY: changelog
-changelog: ## update changelog to the latest release
-	python3 setup.py changelog
-
 .PHONY: release
 release: dist ## package and upload a release
 	twine upload dist/*
