@@ -27,49 +27,49 @@ class TestSocialbrute(unittest.TestCase):
     def test_check_aol_user(self):
         """Test Aol."""
         sb = socialbrute.Aol(self.browser)
-        sb.set_config('socialbrute_username','wordlist.txt', 1)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
     def test_check_facebook_user(self):
         """Test Facebook."""
         sb = socialbrute.Facebook(self.browser)
-        sb.set_config('socialbrute_username','wordlist.txt', 1)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
     def test_check_gmail_user(self):
         """Test GMail."""
         sb = socialbrute.Gmail(self.browser)
-        sb.set_config('socialbrute_username','wordlist.txt', 1)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
     def test_check_hotmail_user(self):
         """Test Hotmail."""
         sb = socialbrute.Hotmail(self.browser)
-        sb.set_config('socialbrute_username','wordlist.txt', 1)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
     def test_check_instagram_user(self):
         """Test Instagram."""
         sb = socialbrute.Instagram(self.browser)
-        sb.set_config('socialbrute_username','wordlist.txt', 1)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
     def test_check_twitter_user(self):
         """Test Twitter."""
         sb = socialbrute.Twitter(self.browser)
-        sb.set_config('socialbrute_username','wordlist.txt', 1)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
     def test_check_vk_user(self):
         """Test Vk."""
         sb = socialbrute.Vk(self.browser)
-        sb.set_config('socialbrute_username','wordlist.txt', 1)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
     def test_check_yahoo_user(self):
         """Test Yahoo."""
         sb = socialbrute.Yahoo(self.browser)
-        sb.set_config('socialbrute_username','wordlist.txt', 1)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
     def test_command_line_interface(self):

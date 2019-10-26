@@ -16,7 +16,7 @@ class Browser:
     def start(self, headless=False, proxy=None, user_agent=None):
         global driver
         chrome_options = Options()
-        if os.environ.get('ARE_ON_TRAVIS')=='True':
+        if os.environ.get('ARE_ON_TRAVIS') == 'True':
             chrome_options.add_argument("--no-sandbox")
             chrome_options.add_argument("--disable-gpu")
         if headless:

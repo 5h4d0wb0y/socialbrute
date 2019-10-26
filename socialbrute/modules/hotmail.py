@@ -23,7 +23,7 @@ class Hotmail:
             input.clear()
             input.send_keys(self.username)
             self.browser.driver.find_element_by_id('idSIButton9').click()
-            err = self.browser.wait_until_element_exists('id','usernameError')
+            err = self.browser.wait_until_element_exists('id', 'usernameError')
             if err:
                 return False
         except BaseException:
