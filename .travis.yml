@@ -15,7 +15,9 @@ before_install:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
+install: 
+  - pip install --user codecov
+  - pip install -U tox-travis
 
 # Command to run tests, e.g. python setup.py test
 script: tox
