@@ -20,9 +20,9 @@ requirements = [
     'terminaltables>=3.1.0',
 ]
 
-setup_requirements = [ ]
+setup_requirements = []
 
-test_requirements = [ ]
+test_requirements = []
 
 about = {}
 here = os.path.abspath(os.path.dirname(__file__))

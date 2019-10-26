@@ -4,9 +4,8 @@
 import os
 import sys
 import click
-from terminaltables import SingleTable #AsciiTable
+from terminaltables import SingleTable  # AsciiTable
 
-import socialbrute
 from socialbrute.socialbrute import *
 from socialbrute.helpers import Colors
 from socialbrute import __author__, __version__
@@ -22,18 +21,37 @@ SOCIALS = [
     "yahoo"
 ]
 
+
 def show_banner():
     click.echo(Colors.GREEN)
-    click.echo(" $$$$$$\                      $$\           $$\ $$$$$$$\                        $$\  ")
-    click.echo("$$  __$$\                     \__|          $$ |$$  __$$\                       $$ | ")
-    click.echo("$$ /  \__| $$$$$$\   $$$$$$$\ $$\  $$$$$$\  $$ |$$ |  $$ | $$$$$$\  $$\   $$\ $$$$$$\    $$$$$$\ ")
-    click.echo("\$$$$$$\  $$  __$$\ $$  _____|$$ | \____$$\ $$ |$$$$$$$\ |$$  __$$\ $$ |  $$ |\_$$  _|  $$  __$$\ ")
-    click.echo(" \____$$\ $$ /  $$ |$$ /      $$ | $$$$$$$ |$$ |$$  __$$\ $$ |  \__|$$ |  $$ |  $$ |    $$$$$$$$ |")
-    click.echo("$$\   $$ |$$ |  $$ |$$ |      $$ |$$  __$$ |$$ |$$ |  $$ |$$ |      $$ |  $$ |  $$ |$$\ $$   ____|")
-    click.echo("\$$$$$$  |\$$$$$$  |\$$$$$$$\ $$ |\$$$$$$$ |$$ |$$$$$$$  |$$ |      \$$$$$$  |  \$$$$  |\$$$$$$$\ ")
-    click.echo(" \______/  \______/  \_______|\__| \_______|\__|\_______/ \__|       \______/    \____/  \_______| \n" + (Colors.ENDC))
-    click.echo("                              --[    Version: " + (Colors.YELLOW) + (Colors.BOLD) + (__version__) + (Colors.ENDC) + "      ]--")
-    click.echo("                              --[     Author: " + (Colors.CYAN) + (Colors.BOLD) + (__author__) + (Colors.ENDC) + "  ]--\n\n")
+    click.echo(
+        r" $$$$$$\                      $$\           $$\ $$$$$$$\                        $$\  ")
+    click.echo(
+        r"$$  __$$\                     \__|          $$ |$$  __$$\                       $$ | ")
+    click.echo(
+        r"$$ /  \__| $$$$$$\   $$$$$$$\ $$\  $$$$$$\  $$ |$$ |  $$ | $$$$$$\  $$\   $$\ $$$$$$\    $$$$$$\ ")
+    click.echo(
+        r"\$$$$$$\  $$  __$$\ $$  _____|$$ | \____$$\ $$ |$$$$$$$\ |$$  __$$\ $$ |  $$ |\_$$  _|  $$  __$$\ ")
+    click.echo(
+        r" \____$$\ $$ /  $$ |$$ /      $$ | $$$$$$$ |$$ |$$  __$$\ $$ |  \__|$$ |  $$ |  $$ |    $$$$$$$$ |")
+    click.echo(
+        r"$$\   $$ |$$ |  $$ |$$ |      $$ |$$  __$$ |$$ |$$ |  $$ |$$ |      $$ |  $$ |  $$ |$$\ $$   ____|")
+    click.echo(
+        r"\$$$$$$  |\$$$$$$  |\$$$$$$$\ $$ |\$$$$$$$ |$$ |$$$$$$$  |$$ |      \$$$$$$  |  \$$$$  |\$$$$$$$\ ")
+    click.echo(r" \______/  \______/  \_______|\__| \_______|\__|\_______/ \__|       \______/    \____/  \_______|" + (Colors.ENDC))
+    click.echo("\n                              --[    Version: " +
+               (Colors.YELLOW) +
+               (Colors.BOLD) +
+               (__version__) +
+               (Colors.ENDC) +
+               "      ]--")
+    click.echo("                              --[     Author: " +
+               (Colors.CYAN) +
+               (Colors.BOLD) +
+               (__author__) +
+               (Colors.ENDC) +
+               "  ]--\n\n")
+
 
 def prompt_proxy(ctx, param, use_proxy):
     if use_proxy:
@@ -44,7 +62,7 @@ def prompt_proxy(ctx, param, use_proxy):
         port = ctx.params.get('proxy_port')
         if not port:
             port = click.prompt('Proxy port', default=9050)
-        
+
         user = ctx.params.get('proxy_user')
         if not user:
             user = click.prompt('Proxy user', default=None)
@@ -54,22 +72,50 @@ def prompt_proxy(ctx, param, use_proxy):
             pwd = click.prompt('Proxy user\'s password', default=None)
         return (host, port, user, pwd)
 
+
 @click.command()
-@click.option('--use-proxy/--no-proxy', is_flag=True, default=False, help='Set a proxy to use', callback=prompt_proxy)
+@click.option(
+    '--use-proxy/--no-proxy',
+    is_flag=True,
+    default=False,
+    help='Set a proxy to use',
+    callback=prompt_proxy)
 @click.option('--proxy-host', is_eager=True, help='Set the proxy host')
-@click.option('--proxy-port', is_eager=True, type=int, help='Specify the proxy port')
+@click.option(
+    '--proxy-port',
+    is_eager=True,
+    type=int,
+    help='Specify the proxy port')
 @click.option('--proxy-user', is_eager=True, help='Set the proxy user')
-@click.option('--proxy-pass', is_eager=True, help='Set the proxy user\'s password')
+@click.option(
+    '--proxy-pass',
+    is_eager=True,
+    help='Set the proxy user\'s password')
 @click.option('-u', '--username', help='Set the username')
-@click.option('-s', '--social', type=click.Choice(SOCIALS), help='Set the social network')
-@click.option('-w', '--wordlist', type=click.Path(), help='Set the wordlist path')
-@click.option('-d', '--delay', type=int, default=1, help='Provide the number of seconds the program delays as each password is tried')
-@click.option('--interactive/--no-interactive', is_flag=True, default=False, help='Set the browser emulation interactive')
-def main(use_proxy, proxy_host, proxy_port, proxy_user, proxy_pass, username, social, wordlist, delay, interactive, token):
+@click.option(
+    '-s',
+    '--social',
+    type=click.Choice(SOCIALS),
+    help='Set the social network')
+@click.option(
+    '-w',
+    '--wordlist',
+    type=click.Path(),
+    help='Set the wordlist path')
+@click.option(
+    '-d',
+    '--delay',
+    type=int,
+    default=1,
+    help='Provide the number of seconds the program delays as each password is tried')
+@click.option('--interactive/--no-interactive', is_flag=True,
+              default=False, help='Set the browser emulation interactive')
+def main(use_proxy, proxy_host, proxy_port, proxy_user, proxy_pass,
+         username, social, wordlist, delay, interactive, token):
     """Console script for socialbrute."""
     if not username:
-            print_error("Missing '-u' or '--username' argument!")
-            sys.exit(-1)
+        print_error("Missing '-u' or '--username' argument!")
+        sys.exit(-1)
 
     if not social:
         print_error("Missing '-s' or '--social' argument!")
@@ -79,7 +125,9 @@ def main(use_proxy, proxy_host, proxy_port, proxy_user, proxy_pass, username, so
         data = []
         for x in SOCIALS:
             data.append("%s%s%s" % (Colors.PURPLE, x, Colors.ENDC))
-        t = SingleTable([data], "%s%s Available Social Networks %s" % (Colors.YELLOW, Colors.BOLD, Colors.ENDC))
+        t = SingleTable(
+            [data], "%s%s Available Social Networks %s" %
+            (Colors.YELLOW, Colors.BOLD, Colors.ENDC))
         print(t.table)
         print("\n")
         print_error("Wrong '-s' or '--social' argument!")
@@ -88,7 +136,7 @@ def main(use_proxy, proxy_host, proxy_port, proxy_user, proxy_pass, username, so
     if not wordlist:
         print_error("Missing '-w' or '--wordlist' argument!")
         return 0
-    
+
     if not os.path.isfile(wordlist):
         print_error('The wordlist does not exist.')
         return 0
@@ -107,7 +155,7 @@ def main(use_proxy, proxy_host, proxy_port, proxy_user, proxy_pass, username, so
         sb = Socialbrute(interactive=interact)
 
     sb.run(social, username, wordlist, delay)
-    
+
     sb.stop()
 
     return 0

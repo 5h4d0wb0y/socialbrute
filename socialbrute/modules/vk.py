@@ -1,5 +1,6 @@
 import time
 
+
 class Vk:
 
     def __init__(self, browser):
@@ -19,14 +20,15 @@ class Vk:
             input.clear()
             input.send_keys(self.username)
             self.browser.driver.find_element_by_id('submitBtn').click()
-            msg = self.browser.driver.find_element_by_xpath('//div[@class="msg_text"]')
+            msg = self.browser.driver.find_element_by_xpath(
+                '//div[@class="msg_text"]')
             if msg:
                 return False
             else:
                 return True
-        except:
+        except BaseException:
             return False
-        
+
     def crack(self):
         passwords = []
         found = ''

@@ -1,6 +1,6 @@
 import time
 import imaplib
-from imaplib import IMAP4
+
 
 class Yahoo:
 
@@ -27,7 +27,7 @@ class Yahoo:
             else:
                 self.name = 'Not found'
                 return True
-        except:
+        except BaseException:
             return False
 
     def crack(self):
@@ -46,6 +46,6 @@ class Yahoo:
             except IMAP4.error:
                 pass
             time.sleep(self.delay)
-       
+
         IMAP4.logout()
         return found

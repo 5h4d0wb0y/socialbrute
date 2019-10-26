@@ -1,6 +1,6 @@
 import time
 import imaplib
-from imaplib import IMAP4
+
 
 class Hotmail:
 
@@ -26,7 +26,7 @@ class Hotmail:
             err = self.browser.driver.find_element_by_id('usernameError')
             if err:
                 return False
-        except:
+        except BaseException:
             self.name = 'Not found'
             return True
 
@@ -46,6 +46,6 @@ class Hotmail:
             except IMAP4.error:
                 pass
             time.sleep(self.delay)
-       
+
         IMAP4.logout()
         return found

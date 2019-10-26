@@ -1,7 +1,7 @@
 import time
 import imaplib
-from imaplib import IMAP4
 from selenium.webdriver.common.keys import Keys
+
 
 class Gmail:
 
@@ -28,7 +28,7 @@ class Gmail:
                 return True
             else:
                 return False
-        except:
+        except BaseException:
             return False
 
     def crack(self):
@@ -47,6 +47,6 @@ class Gmail:
             except IMAP4.error:
                 pass
             time.sleep(self.delay)
-       
+
         IMAP4.logout()
         return found

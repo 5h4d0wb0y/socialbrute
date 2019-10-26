@@ -7,7 +7,7 @@
 import unittest
 from click.testing import CliRunner
 
-from socialbrute import socialbrute
+# from socialbrute import socialbrute
 from socialbrute import browser
 from socialbrute import cli
 
@@ -32,4 +32,4 @@ class TestSocialbrute(unittest.TestCase):
         runner = CliRunner()
         help_result = runner.invoke(cli.main, ['--help'])
         assert help_result.exit_code == 0
-        assert '--help                          Show this message and exit.' in help_result.output
+        assert 'Show this message and exit.' in help_result.output

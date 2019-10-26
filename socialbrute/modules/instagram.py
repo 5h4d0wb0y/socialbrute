@@ -1,6 +1,7 @@
 import time
 from selenium.webdriver.common.keys import Keys
 
+
 class Instagram:
 
     def __init__(self, browser):
@@ -18,10 +19,11 @@ class Instagram:
         username = '@' + self.username
         if username in self.browser.driver.title:
             try:
-                name = self.browser.driver.find_element_by_xpath("//span[@id=\"react-root\"]/section/main/div/header/section/div[2]/h1")
+                name = self.browser.driver.find_element_by_xpath(
+                    "//span[@id=\"react-root\"]/section/main/div/header/section/div[2]/h1")
                 self.name = name.text
                 return True
-            except:
+            except BaseException:
                 self.name = ''
                 return False
         else:
@@ -46,7 +48,7 @@ class Instagram:
 
             time.sleep(1)
             url = self.browser.driver.current_url
-            if (url != self.url) and (not 'Login' in self.browser.driver.title):
+            if (url != self.url) and ('Login' not in self.browser.driver.title):
                 found = password
                 break
             time.sleep(self.delay)
