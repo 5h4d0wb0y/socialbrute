@@ -11,7 +11,9 @@ addons:
   chrome: stable
 
 before_install:
-  - # start your web application and listen on `localhost`
+  - wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMEDRIVER/chromedriver_linux64.zip
+  - mkdir $HOME/chromedriver && unzip /tmp/chromedriver.zip -d $HOME/chromedriver
+  - export PATH=$HOME/chromedriver:$PATH
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
@@ -21,6 +23,21 @@ install:
 
 # Command to run tests, e.g. python setup.py test
 script: tox
+
+jobs:
+  include:
+    - stage:
+      python: 3.6
+      env: TOXENV=py36 CHROMEDRIVER=78.0.3904.70 ARE_ON_TRAVIS=1
+    - stage:
+      python: 3.5
+      env: TOXENV=py35 CHROMEDRIVER=78.0.3904.70 ARE_ON_TRAVIS=1
+    - stage:
+      python: 3.4
+      env: TOXENV=py34 CHROMEDRIVER=78.0.3904.70 ARE_ON_TRAVIS=1
+    - stage:
+      python: 2.7
+      env: TOXENV=py27 CHROMEDRIVER=78.0.3904.70 ARE_ON_TRAVIS=1
 
 after_success:
   - codecov
