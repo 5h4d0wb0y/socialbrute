@@ -24,6 +24,8 @@ class Yahoo:
             self.browser.driver.find_element_by_id('login-signin').click()
             if 'Sorry, we don&#x27;t recognize this email.' in self.browser.driver.page_source:
                 return False
+            elif 'fail' in self.browser.current_url:
+                return False
             else:
                 self.name = 'Not found'
                 return True

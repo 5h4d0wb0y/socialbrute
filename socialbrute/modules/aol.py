@@ -22,7 +22,10 @@ class Aol:
             input.clear()
             input.send_keys(self.username)
             self.browser.driver.find_element_by_id('login-signin').click()
+            self.browser.implicitly_wait(3) 
             if 'Sorry, we don&#x27;t recognize this email.' in self.browser.driver.page_source:
+                return False
+            elif 'This account has been deactivated' in self.browser.driver.page_source:
                 return False
             else:
                 self.name = 'Not found'

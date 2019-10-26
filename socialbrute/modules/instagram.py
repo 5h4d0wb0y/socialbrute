@@ -24,7 +24,7 @@ class Instagram:
                 self.name = name.text
                 return True
             except BaseException:
-                self.name = ''
+                self.name = 'Not found'
                 return False
         else:
             return False
