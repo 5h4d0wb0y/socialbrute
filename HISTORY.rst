@@ -3,9 +3,10 @@ History
 =======
 
 **unreleased**
-**v1.0.2**
-**v1.0.2**
-------
+**v1.0.3**
+
+v1.0.2 (2019-10-27)
+-------------------
 
 * Added socialbrute tests for each module
 * Check if the browser has been started on travis
