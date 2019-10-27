@@ -111,7 +111,7 @@ def prompt_proxy(ctx, param, use_proxy):
 @click.option('--interactive/--no-interactive', is_flag=True,
               default=False, help='Set the browser emulation interactive')
 def main(use_proxy, proxy_host, proxy_port, proxy_user, proxy_pass,
-         username, social, wordlist, delay, interactive, token):
+         username, social, wordlist, delay, interactive):
     """Console script for socialbrute."""
     if not username:
         print_error("Missing '-u' or '--username' argument!")
