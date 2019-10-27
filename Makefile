@@ -111,22 +111,17 @@ dist: clean ## builds source and wheel package
 install: clean ## install the package to the active Python's site-packages
 	python3 setup.py install
 	
-VERSION = $(shell cat socialbrute/__init__.py| grep '__version__ = ' | cut -d "'" -f 2)
-
 .PHONY: bump-patch
 bump-patch: ## bump the patch version
 	bump2version patch
-	@echo Bumped to version $(VERSION)
 
 .PHONY: bump-minor
 bump-minor: ## bump the minor version
 	bump2version minor
-	@echo Bumped to version $(VERSION)
 
 .PHONY: bump-major
 bump-major: ## bump the major version
 	bump2version major
-	@echo Bumped to version $(VERSION)
 
 define RELEASE_NOTES
 import re, os
