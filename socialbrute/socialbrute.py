@@ -52,7 +52,7 @@ class Socialbrute(object):
     def stop(self):
         self.browser.stop()
 
-    def run(self, social, username, wordlist, delay, token, proxy=None):
+    def run(self, social, username, wordlist, delay, proxy=None):
         total = len(open(wordlist, 'r').read().split('\n'))
 
         click.echo('     Social Network: ' + (Colors.YELLOW) +
