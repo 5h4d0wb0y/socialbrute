@@ -144,6 +144,10 @@ export RELEASE_NOTES
 release-notes: ## extract the latest commits to add to the changelog
 	python -c "$$RELEASE_NOTES"
 
+.PHONY: release-test
+release-test: dist ## package and upload a release
+	twine upload --repository testpypi dist/*
+
 .PHONY: release
 release: dist ## package and upload a release
-	twine upload dist/*
+	twine upload --repository pypi --verbose dist/*
