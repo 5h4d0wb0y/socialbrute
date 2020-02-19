@@ -28,16 +28,16 @@ jobs:
   include:
     - stage:
       python: 3.6
-      env: TOXENV=py36 CHROMEDRIVER=78.0.3904.70 ARE_ON_TRAVIS=1
+      env: TOXENV=py36 CHROMEDRIVER=78.0.3904.70
     - stage:
       python: 3.5
-      env: TOXENV=py35 CHROMEDRIVER=78.0.3904.70 ARE_ON_TRAVIS=1
+      env: TOXENV=py35 CHROMEDRIVER=78.0.3904.70
     - stage:
       python: 3.4
-      env: TOXENV=py34 CHROMEDRIVER=78.0.3904.70 ARE_ON_TRAVIS=1
+      env: TOXENV=py34 CHROMEDRIVER=78.0.3904.70
     - stage:
       python: 2.7
-      env: TOXENV=py27 CHROMEDRIVER=78.0.3904.70 ARE_ON_TRAVIS=1
+      env: TOXENV=py27 CHROMEDRIVER=78.0.3904.70
 
 after_success:
   - codecov
