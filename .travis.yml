@@ -6,7 +6,9 @@ python:
   - 3.5
   - 3.4
   - 2.7
-dist: trusty
+dist: xenial
+services:
+  - xvfb
 addons:
   chrome: stable
 
