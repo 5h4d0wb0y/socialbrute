@@ -1,6 +1,7 @@
 import time
 from selenium.common.exceptions import NoSuchElementException
 
+
 class Facebook:
 
     def __init__(self, browser):
@@ -15,7 +16,7 @@ class Facebook:
 
     def check_user(self):
         self.browser.driver.get(self.url)
-        email = self.browser.wait_until_element_exists('id','email')
+        email = self.browser.wait_until_element_exists('id', 'email')
         email.send_keys(self.username)
         form = self.browser.driver.find_element_by_id('login_form')
         form.submit()
@@ -52,7 +53,7 @@ class Facebook:
             self.browser.wait_page_loaded()
 
             url = self.browser.driver.current_url
-            if (url != self.url) and ('login_attempt' not in url): 
+            if (url != self.url) and ('login_attempt' not in url):
                 found = password
                 break
             time.sleep(self.delay)

@@ -18,7 +18,7 @@ class Yahoo:
     def check_user(self):
         self.browser.driver.get('https://login.yahoo.com/')
         try:
-            input = self.browser.wait_until_element_exists('id','login-username')
+            input = self.browser.wait_until_element_exists('id', 'login-username')
             input.clear()
             input.send_keys(self.username)
             self.browser.driver.find_element_by_id('login-signin').click()

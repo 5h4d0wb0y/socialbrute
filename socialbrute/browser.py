@@ -1,4 +1,3 @@
-import os
 import zipfile
 import json
 from selenium.webdriver import Chrome
@@ -8,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 timeout = 5
+
 
 class Browser:
 
@@ -24,7 +24,7 @@ class Browser:
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--lang=en")
-        #if os.environ.get('ARE_ON_TRAVIS') == 'True':
+        # if os.environ.get('ARE_ON_TRAVIS') == 'True':
         #    chrome_options.add_argument("--no-sandbox")
         #    chrome_options.add_argument("--disable-gpu")
         if headless:
@@ -100,9 +100,9 @@ class Browser:
         return self.driver
 
     def wait_page_loaded(self):
-        condition = lambda browser: self.driver.execute_script(
-                    "return document.readyState"
-                ) in ["complete" or "loaded"]
+        def condition(browser): return self.driver.execute_script(
+            "return document.readyState"
+        ) in ["complete" or "loaded"]
         try:
             wait = WebDriverWait(self.driver, timeout)
             result = wait.until(condition)

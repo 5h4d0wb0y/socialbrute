@@ -11,6 +11,7 @@ from socialbrute import socialbrute
 from socialbrute import browser
 from socialbrute import cli
 
+
 class TestSocialbrute(unittest.TestCase):
     """Tests for `socialbrute` package."""
 
@@ -71,8 +72,6 @@ class TestSocialbrute(unittest.TestCase):
         sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
 
-
-
     def test_check_spotify_user(self):
         """Test Spotify."""
         sb = socialbrute.Spotify(self.browser)
@@ -102,14 +101,6 @@ class TestSocialbrute(unittest.TestCase):
         sb = socialbrute.Linkedin(self.browser)
         sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
-
-
-
-
-
-
-
-
 
     def test_command_line_interface(self):
         """Test the CLI."""

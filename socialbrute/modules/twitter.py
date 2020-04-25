@@ -34,7 +34,7 @@ class Twitter:
         for password in passwords:
             self.browser.driver.get(self.url)
             email = self.browser.wait_until_element_exists('name', 'session[username_or_email]')
-            #email = self.browser.driver.find_element_by_name(
+            # email = self.browser.driver.find_element_by_name(
             #    'session[username_or_email]')
             email.send_keys(self.username)
             pwd = self.browser.driver.find_element_by_name('session[password]')

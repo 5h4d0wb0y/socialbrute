@@ -19,7 +19,7 @@ class Gmail:
     def check_user(self):
         self.browser.driver.get('https://www.google.com/accounts/ForgotPasswd')
         try:
-            email = self.browser.wait_until_element_exists('id','identifier')
+            email = self.browser.wait_until_element_exists('id', 'identifier')
             email.send_keys(self.username)
             email.send_keys(Keys.RETURN)
             pwd = self.browser.driver.find_element_by_id('password')
