@@ -22,7 +22,8 @@ SOCIALS = [
     "spotify",
     "netflix",
     "gitlab",
-    "github"
+    "github",
+    "linkedin"
 ]
 
 

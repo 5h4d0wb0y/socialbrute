@@ -45,6 +45,7 @@ Features
         * Netflix
         * Gitlab
         * Github
+        * Linkedin
 
 
 Credits
