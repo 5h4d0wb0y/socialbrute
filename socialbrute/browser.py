@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
+timeout = 5
 
 class Browser:
 
@@ -22,6 +23,7 @@ class Browser:
         chrome_options.add_argument("--disable-dev-shm-using")
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--lang=en")
         #if os.environ.get('ARE_ON_TRAVIS') == 'True':
         #    chrome_options.add_argument("--no-sandbox")
         #    chrome_options.add_argument("--disable-gpu")
@@ -89,7 +91,6 @@ class Browser:
             # chrome_options.add_argument('--proxy-server=%s' % hostname + ":" + port)
         if user_agent:
             chrome_options.add_argument('--user-agent=%s' % user_agent)
-        chrome_options.add_argument("--lang=en")
         self.driver = Chrome(options=chrome_options)
 
     def stop(self):
@@ -98,26 +99,36 @@ class Browser:
     def get_driver(self):
         return self.driver
 
+    def wait_page_loaded(self):
+        condition = lambda browser: self.driver.execute_script(
+                    "return document.readyState"
+                ) in ["complete" or "loaded"]
+        try:
+            wait = WebDriverWait(self.driver, timeout)
+            result = wait.until(condition)
+        except TimeoutException:
+            return False
+        return result
+
     def wait_until_element_exists(self, by, value):
-        sec = 120
         if by == 'xpath':
             elem = WebDriverWait(
-                self.driver, sec).until(
+                self.driver, timeout).until(
                 EC.presence_of_element_located(
                     (By.XPATH, value)))
         elif by == 'id':
             elem = WebDriverWait(
-                self.driver, sec).until(
+                self.driver, timeout).until(
                 EC.presence_of_element_located(
                     (By.ID, value)))
         elif by == 'name':
             elem = WebDriverWait(
-                self.driver, sec).until(
+                self.driver, timeout).until(
                 EC.presence_of_element_located(
                     (By.NAME, value)))
         elif by == 'css':
             elem = WebDriverWait(
-                self.driver, sec).until(
+                self.driver, timeout).until(
                 EC.presence_of_element_located(
                     (By.CSS_SELECTOR, value)))
         return elem
