@@ -68,6 +68,46 @@ socialbrute.modules.yahoo module
     :undoc-members:
     :show-inheritance:
 
+socialbrute.modules.spotify module
+----------------------------------
+
+.. automodule:: socialbrute.modules.spotify
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+socialbrute.modules.netflix module
+----------------------------------
+
+.. automodule:: socialbrute.modules.netflix
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+socialbrute.modules.gitlab module
+---------------------------------
+
+.. automodule:: socialbrute.modules.gitlab
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+socialbrute.modules.github module
+---------------------------------
+
+.. automodule:: socialbrute.modules.github
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+socialbrute.modules.linkedin module
+-----------------------------------
+
+.. automodule:: socialbrute.modules.linkedin
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

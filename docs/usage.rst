@@ -17,7 +17,7 @@ From the `-h` or `--help` help menu:
     --proxy-user TEXT               Set the proxy user
     --proxy-pass TEXT               Set the proxy user's password
     -u, --username TEXT             Set the username
-    -s, --social [aol|facebook|gmail|hotmail|instagram|twitter|vk|yahoo]
+    -s, --social [aol|facebook|gmail|hotmail|instagram|twitter|vk|yahoo|spotify|netflix|gitlab|github|linkedin]
                                     Set the social network
     -w, --wordlist PATH             Set the wordlist path
     -d, --delay INTEGER             Provide the number of seconds the program
