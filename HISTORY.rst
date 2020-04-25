@@ -3,8 +3,32 @@ History
 =======
 
 **unreleased**
-**v1.1.0**
-**v1.0.3**
+**v1.1.1**
+
+v1.1.0 (2020-04-25)
+-------------------
+
+* Removed unused imports and variables and conformed to the pep 8 style guide
+* Updated docs
+* Added tests for the new modules
+* Fixed the wait after the call to the page in the modules
+* Added new module for linkedin
+* Added new module for github
+* Added new module for gitlab
+* Added new module for netflix
+* Added new module for spotify
+* Fixed instagram module
+* Fixed twitter module
+* Fixed the check_user function of the hotmail module
+* Fixed facebook module
+* Added wait for page loaded
+* Updated travis
+* Fixes #7
+* Fixed unused variable in run method
+* Added new make command to test releases
+* Fixed unused variable in cli method
+* Updated makefile
+* Fixed tag name on bump2version
 
 v1.0.2 (2019-10-27)
 -------------------
