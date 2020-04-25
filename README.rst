@@ -41,6 +41,7 @@ Features
         * Twitter
         * VK
         * Yahoo
+        * Spotify
 
 
 Credits

@@ -18,7 +18,8 @@ SOCIALS = [
     "instagram",
     "twitter",
     "vk",
-    "yahoo"
+    "yahoo",
+    "spotify"
 ]
 
 

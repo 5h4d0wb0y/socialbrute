@@ -12,6 +12,7 @@ from .modules.twitter import Twitter
 from .modules.vk import Vk
 from .modules.yahoo import Yahoo
 from .modules.aol import Aol
+from .modules.spotify import Spotify
 from .helpers import *
 from .browser import *
 
@@ -84,6 +85,8 @@ class Socialbrute(object):
             a = Vk(self.browser)
         elif social == 'aol':
             a = Aol(self.browser)
+        elif social == 'spotify':
+            a = Spotify(self.browser)
         else:
             print_error("Social network not supported!")
             return
