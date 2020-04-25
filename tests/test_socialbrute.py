@@ -11,14 +11,13 @@ from socialbrute import socialbrute
 from socialbrute import browser
 from socialbrute import cli
 
-
 class TestSocialbrute(unittest.TestCase):
     """Tests for `socialbrute` package."""
 
     def setUp(self):
         """Start browser."""
         self.browser = browser.Browser()
-        self.browser.start(headless=False)
+        self.browser.start(headless=True)
 
     def tearDown(self):
         """Stop browser."""
@@ -71,6 +70,46 @@ class TestSocialbrute(unittest.TestCase):
         sb = socialbrute.Yahoo(self.browser)
         sb.set_config('socialbrute_username', 'wordlist.txt', 1)
         assert sb.check_user() == 0
+
+
+
+    def test_check_spotify_user(self):
+        """Test Spotify."""
+        sb = socialbrute.Spotify(self.browser)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
+        assert sb.check_user() == 0
+
+    def test_check_netflix_user(self):
+        """Test Netflix."""
+        sb = socialbrute.Netflix(self.browser)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
+        assert sb.check_user() == 0
+
+    def test_check_gitlab_user(self):
+        """Test Gitlab."""
+        sb = socialbrute.Gitlab(self.browser)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
+        assert sb.check_user() == 0
+
+    def test_check_github_user(self):
+        """Test Github."""
+        sb = socialbrute.Github(self.browser)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
+        assert sb.check_user() == 0
+
+    def test_check_linkedin_user(self):
+        """Test Linkedin."""
+        sb = socialbrute.Linkedin(self.browser)
+        sb.set_config('socialbrute_username', 'wordlist.txt', 1)
+        assert sb.check_user() == 0
+
+
+
+
+
+
+
+
 
     def test_command_line_interface(self):
         """Test the CLI."""
