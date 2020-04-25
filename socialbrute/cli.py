@@ -20,7 +20,8 @@ SOCIALS = [
     "vk",
     "yahoo",
     "spotify",
-    "netflix"
+    "netflix",
+    "gitlab"
 ]
 
 

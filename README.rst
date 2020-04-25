@@ -43,6 +43,7 @@ Features
         * Yahoo
         * Spotify
         * Netflix
+        * Gitlab
 
 
 Credits

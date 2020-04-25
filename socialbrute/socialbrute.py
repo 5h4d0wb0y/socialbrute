@@ -14,6 +14,7 @@ from .modules.yahoo import Yahoo
 from .modules.aol import Aol
 from .modules.spotify import Spotify
 from .modules.netflix import Netflix
+from .modules.gitlab import Gitlab
 from .helpers import *
 from .browser import *
 
@@ -90,6 +91,8 @@ class Socialbrute(object):
             a = Spotify(self.browser)
         elif social == 'netflix':
             a = Netflix(self.browser)
+        elif social == 'gitlab':
+            a = Gitlab(self.browser)
         else:
             print_error("Social network not supported!")
             return
