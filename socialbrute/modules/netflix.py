@@ -25,8 +25,7 @@ class Netflix:
                 passwords.append(line.strip('\n'))
         for password in passwords:
             self.browser.driver.get(self.url)
-            time.sleep(0.5)
-            email = self.browser.driver.find_element_by_name('userLoginId')
+            email = self.browser.wait_until_element_exists('name','userLoginId')
             email.clear()
             email.send_keys(self.username)
             pwd = self.browser.driver.find_element_by_name('password')

@@ -16,7 +16,7 @@ class Linkedin:
 
     def check_user(self):
         self.browser.driver.get(self.url)
-        email = self.browser.driver.find_element_by_id('username')
+        email = self.browser.wait_until_element_exists('id','username')
         email.send_keys(self.username)
         pwd = self.browser.driver.find_element_by_id('password')
         pwd.send_keys('password12345')

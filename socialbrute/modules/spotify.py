@@ -25,8 +25,7 @@ class Spotify:
                 passwords.append(line.strip('\n'))
         for password in passwords:
             self.browser.driver.get(self.url)
-            time.sleep(1)
-            email = self.browser.driver.find_element_by_id('login-username')
+            email = self.browser.wait_until_element_exists('id','login-username')
             email.clear()
             email.send_keys(self.username)
             pwd = self.browser.driver.find_element_by_id('login-password')

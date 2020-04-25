@@ -16,7 +16,7 @@ class Vk:
     def check_user(self):
         self.browser.driver.get('https://vk.com/restore')
         try:
-            input = self.browser.driver.find_element_by_id('login_input')
+            input = self.browser.wait_until_element_exists('id','login_input')
             input.clear()
             input.send_keys(self.username)
             self.browser.driver.find_element_by_id('submitBtn').click()
@@ -37,7 +37,7 @@ class Vk:
                 passwords.append(line.strip('\n'))
         for password in passwords:
             self.browser.driver.get(self.url)
-            email = self.browser.driver.find_element_by_id('email')
+            email = self.browser.wait_until_element_exists('id','email')
             email.send_keys(self.username)
             pwd = self.browser.driver.find_element_by_id('pass')
             pwd.send_keys(password)

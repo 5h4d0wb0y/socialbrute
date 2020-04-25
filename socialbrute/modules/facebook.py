@@ -15,7 +15,7 @@ class Facebook:
 
     def check_user(self):
         self.browser.driver.get(self.url)
-        email = self.browser.driver.find_element_by_id('email')
+        email = self.browser.wait_until_element_exists('id','email')
         email.send_keys(self.username)
         form = self.browser.driver.find_element_by_id('login_form')
         form.submit()
