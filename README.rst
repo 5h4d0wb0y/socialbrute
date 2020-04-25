@@ -42,6 +42,7 @@ Features
         * VK
         * Yahoo
         * Spotify
+        * Netflix
 
 
 Credits
