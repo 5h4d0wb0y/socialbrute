@@ -44,6 +44,7 @@ Features
         * Spotify
         * Netflix
         * Gitlab
+        * Github
 
 
 Credits
